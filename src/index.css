@@ -1,0 +1,371 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'THICCCBOI-Regular';
+  src: url('../public/fonts/THICCCBOI-Regular.woff2') format('woff2'),
+      url('../public/fonts/THICCCBOI-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'THICCCBOI-Medium';
+  src: url('../public/fonts/THICCCBOI-Medium.woff2') format('woff2'),
+      url('../public/fonts/THICCCBOI-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'THICCCBOI-SemiBold';
+  src: url('../public/fonts/THICCCBOI-SemiBold.woff2') format('woff2'),
+      url('../public/fonts/THICCCBOI-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'THICCCBOI-Bold';
+  src: url('../public/fonts/THICCCBOI-Bold.woff2') format('woff2'),
+      url('../public/fonts/THICCCBOI-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Added breakpoints with min width in px: */
+  /* 480px */
+  --breakpoint-xs: 30rem;
+
+
+  /* Default breakpoints in use with min width in px: */
+  /* 640px */
+  --breakpoint-sm: 40rem;
+
+  /* 768px */
+  --breakpoint-md: 48rem;
+
+  /* 992px - mediumish: this breakpoint is currently only used for the ContactForm component */
+  --breakpoint-mdish: 62rem;
+
+  /* 1024px */
+  --breakpoint-lg: 64rem;
+
+  /* 1280px */
+  --breakpoint-xl: 80rem;
+
+  /* 1536px */
+  --breakpoint-2xl: 96rem;
+
+
+  /* Added breakpoints with min width in px: */
+  /* 1920px */
+  --breakpoint-3xl: 120rem;
+}
+
+:root {
+  --THICCCBOI-Regular: 'THICCCBOI-Regular', sans-serif;
+  --THICCCBOI-Medium: 'THICCCBOI-Medium', sans-serif;
+  --THICCCBOI-SemiBold: 'THICCCBOI-SemiBold', sans-serif;
+  --THICCCBOI-Bold: 'THICCCBOI-Bold', sans-serif;
+
+  --neutral-100: hsl(0, 0%, 100%);
+  --neutral-200: hsl(0, 0%, 98%);
+  --neutral-300: hsl(0, 0%, 87%);
+  --neutral-400: hsl(0, 0%, 80%);
+  --neutral-500: hsl(0, 0%, 67%);
+  --neutral-600: hsl(0, 0%, 41%);
+  --neutral-700: hsl(0, 0%, 21%);
+  --neutral-800: hsl(0, 0%, 5%);
+
+  --error-bg: hsl(0, 100%, 95%);
+  --error-text: hsl(0, 100%, 68%);
+}
+
+* 
+{
+  box-sizing: border-box;
+}
+
+/* NOTE: any classes with 'Direct' only work if the element is hovered on. If a state change is needed to simulate a hover, use the 'Indirect' classes */
+.lightenDirect
+{
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.lightenDirect:hover
+{
+  opacity: 0.6;
+}
+
+/* To change color of links on side menu */
+.darkenText
+{
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.darkenText:hover
+{
+  opacity: 0.4;
+}
+
+/* To move arrow SVGs from their origin to the top right and vice versa */
+.moveFromOriginToTopRight, .moveFromTopRightToOrigin
+{
+  transition-property: transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.moveFromOriginToTopRight
+{
+  transform: translate(0px, 0px);
+  transform: translate(15%, -15%);
+}
+
+.moveFromTopRightToOrigin
+{
+  transform: translate(15%, -15%);
+  transform: translate(0px, 0px);
+}
+
+/* Grow/Stretch and shrink the horizontal line under certain links */
+.grow, .shrink
+{
+  transition-property: transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.grow
+{
+  transform-origin: left;
+  transform: scaleX(0);
+  transform: scaleX(1);
+}
+
+.shrink
+{
+  transform-origin: left;
+  transform: scaleX(1);
+  transform: scaleX(0);
+}
+
+/* To lighten the color of text in a list item */
+.addOpacityIndirect, .removeOpacityIndirect
+{
+  transition-property: opacity;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.addOpacityIndirect
+{
+  opacity: 0.6;
+  opacity: 1;
+}
+
+.removeOpacityIndirect
+{
+  opacity: 1;
+  opacity: 0.6;
+}
+
+/* To make list items bigger or smaller */
+.scaleDownIndirect, .scaleUpIndirect
+{
+  transition-property: transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.scaleDownIndirect
+{
+  transform: scale(1);
+  transform: scale(0.98);
+}
+
+.scaleUpIndirect
+{
+  transform: scaleX(0.98);
+  transform: scaleX(1);
+}
+
+/* To zoom in and out of images found in list items */
+.zoomInIndirect, .zoomOutIndirect
+{
+  transition-property: transform;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.zoomInIndirect
+{
+  transform: scale(1);
+  transform: scale(1.09);
+}
+
+.zoomOutIndirect
+{
+  transform: scaleX(1.09);
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion) {
+  .lightenDirect, .moveFromOriginToTopRight, .moveFromTopRightToOrigin, .grow, .shrink, .addOpacityIndirect, .removeOpacityIndirect, .scaleDownIndirect, .scaleUpIndirect, .zoomInIndirect, .zoomOutIndirect, .hamburgerBarFlat, .hamburgerBarTopDiagonal, .hamburgerBarBottomDiagonal, .slide, .darkenText, .darkenBottomBorderDirect, .textColorDarken_700To800 {
+    transition: none;
+  } 
+}
+ 
+/* The - between words or phrases */
+.textDivider
+{
+  margin: 0 10px;
+  background-color: var(--neutral-500);
+  width: 25px;
+  height: 1px;
+}
+
+/* The line between sections */
+.divider
+{
+  background-color: var(--neutral-300);
+  width: 100%;
+  height: 1px;
+}
+
+/* Hamburger menu bar transitions */
+.hamburgerBarFlat, .hamburgerBarTopDiagonal, .hamburgerBarBottomDiagonal
+{
+  transition: transform 0.35s;
+} 
+
+/* Arranges any (top or bottom) menu bar to be horizontal */
+.hamburgerBarHorizontal
+{
+  transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+}
+
+/* Arranges top bar of hamburger menu to go diagonally upwards ex. / */
+.hamburgerBarTopDiagonal
+{
+  transform: translate3d(0px, 7px, 0px) rotateZ(135deg);
+}
+
+/* Arranges bottom bar of hamburger menu to go diagonally downwards ex. \ */
+.hamburgerBarBottomDiagonal
+{
+  transform: translate3d(0px, -7px, 0px) rotateZ(45deg);
+}
+
+/* To slide side menu on and off left side of screen */
+/* Using https://stackoverflow.com/a/63650017 to create transition that does not appear when page loads */
+.slide
+{
+  transition: transform 0.4s ease;
+}
+
+.out
+{
+  transform: translateX(100%);
+}
+
+.in
+{
+  transform: translateX(0);
+}
+
+/* For site to fade-in once loaded on user's browser */
+.appear {
+  animation-name: appear;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-timing-function: ease;
+}
+
+@keyframes appear
+{
+  0%
+  {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100%
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .appear {
+    animation: none;
+  }
+}
+
+/* Hide visually, but still appear in DOM for a11y */
+.aria-invisible 
+{
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px;  
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/* Outline around elements when pressing the Tab key */
+*:focus-visible {
+  outline: 2px solid var(--neutral-800);
+  border-radius: 2%;
+}
+
+input:focus-visible, textarea:focus-visible {
+  outline: 2px solid transparent;
+  border-bottom-color: var(--neutral-800);
+}
+
+/* Remove autocomplete/autofill styling */
+input:is(:-webkit-autofill, :autofill) {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+}
+
+.darkenBottomBorderDirect
+{
+  border-bottom-color: var(--neutral-500);
+  transition-property: border-bottom-color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.darkenBottomBorderDirect:hover
+{
+  border-bottom-color: var(--neutral-800);
+}
+
+.textColorDarken_700To800
+{
+  color: var(--neutral-700);
+  transition-property: color;
+  transition-duration: 350ms;
+  transition-timing-function: ease;
+}
+
+.textColorDarken_700To800:hover
+{
+  color: var(--neutral-800);
+}
